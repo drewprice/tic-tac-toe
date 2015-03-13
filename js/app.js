@@ -1,3 +1,5 @@
+// ---- FUNCTIONS ----
+
 // The 'winner' function checks for a winner
 function winner() {
 	// Get text value of each square
@@ -58,16 +60,20 @@ function cleanUp() {
 	// Update score board
 	$('.total_games')
 		.text(gameCount)
-		.appendTo('.total_games');
+		.hide()
+		.appendTo('.total_games').fadeIn(1000);
 	$('.x_wins')
 		.text(xWins)
-		.appendTo('.x_wins');
+		.hide()
+		.appendTo('.x_wins').fadeIn(1000);
 	$('.o_wins')
 		.text(oWins)
-		.appendTo('.o_wins');
+		.hide()
+		.appendTo('.o_wins').fadeIn(1000);
 	$('.total_draws')
 		.text(drawCount)
-		.appendTo('.total_draws');
+		.hide()
+		.appendTo('.total_draws').fadeIn(1000);
 };
 
 function totalWins(p) {
@@ -86,9 +92,18 @@ function totalDraws() {
 	drawCount++;
 };
 
+function togglePlayer(p) {
+	if (p == "X") {
+		player = "O";
+	} else {
+		player = "X";
+	};
+}
+
+// ---- APPLICATION STARTS HERE ----
 $(document).ready(function() {
 
-	// Define initial player
+	// Define initial player & counts
 	player = "X";
 	gameCount = 0;
 	drawCount = 0;
@@ -96,16 +111,18 @@ $(document).ready(function() {
 	oWins = 0;
 
 	$('.square')
-		.on("click", function() {
+		.on("click", function(event) {
+			// Avoid following href "#", which makes app jumpy
+			event.preventDefault()
+			
 			// First make sure it is an open square
 			if ($(this).hasClass('occupied')) {
 				alert("This space is occupied, try another.")
-			// If square is open...
 			} else {
 				// Occupy the square, and add the players mark
 				$(this)
 					.addClass('occupied')
-					.text(player).appendTo(this);
+					.hide().text(player).appendTo(this).fadeIn(500);
 
 				// Check for a winner
 				if (winner()) {
@@ -115,6 +132,7 @@ $(document).ready(function() {
 					totalGames();
 					// Reset board
 					cleanUp();
+					// Winner starts next round, so no player toggle here
 
 				// Check for a draw
 				} else if (draw()) {
@@ -124,15 +142,12 @@ $(document).ready(function() {
 					totalGames();
 					// Reset board
 					cleanUp();
+					togglePlayer(player);
 
 				// Prepare for next turn
 				} else {
-					if (player == "X") {
-						player = "O";
-					} else {
-						player = "X";
-					};
-					$('.player').text(player).appendTo('.player');
+					togglePlayer(player)
+					$('.player').hide().text(player).appendTo('.player').fadeIn(500);
 				};
 			};
 		});

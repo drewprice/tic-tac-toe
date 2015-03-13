@@ -4,11 +4,21 @@
 
 h1 {
 	font: 700 3em 'Oswald', sans-serif;
+	margin: 10px;
 	color: #434343;
 }
 
 h2 {
 	font: 400 1.5em 'PT Mono', sans-serif;
+	color: #434343;
+}
+
+.player {
+	color: #e00000;
+}
+
+p {
+	color: #434343;
 }
 
 a {
@@ -22,8 +32,9 @@ a:visited {
 }
 
 .container {
-	width: 40vw;
-	height: 40vw;
+	text-align: center;
+	width: 35vw;
+	height: 35vw;
 	margin: 0 auto;
 	border-radius: 5%;
 	overflow: hidden;
@@ -32,8 +43,8 @@ a:visited {
 	.square {
 		float: left;
 		text-align: center;
-		width: 32.9%;
-		height: 32.9%;
+		width: 32.86%;
+		height: 32.86%;
 		-webkit-transition: background 0.75s;
 		-moz-transition: background 0.75s;
 		-o-transition: background 0.75s;
@@ -79,4 +90,12 @@ a:visited {
 .scores {
 	text-align: center;
 	font: 400 1em 'PT Mono', sans-serif;
+	color: #434343;
 }
+
+	.points {
+		color: #fff;
+		background: #434343;
+		padding: 3px;
+		border-radius: 3px;
+	}
