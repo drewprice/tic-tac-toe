@@ -1,0 +1,22 @@
+.info {
+	text-align: center;
+}
+
+a {
+	text-decoration: none; 
+}
+
+.container {
+	width: 45vw;
+	height: 45vw;
+	margin: 0 auto;
+	outline: red solid 1px;
+}
+
+	.square {
+		float: left;
+		text-align: center;
+		width: 33.33333333%;
+		height: 33.33333333%;
+		outline: grey dashed 1px;
+	}
