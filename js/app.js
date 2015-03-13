@@ -30,14 +30,30 @@ function winner() {
 	return false
 }
 
-function tie() {
-
-	if ($('.square').each().hasClass('occupied')) {
+// This function checks to for a fullboard, without a winner
+function draw() {
+	if (
+		$('.one').hasClass('occupied') &&
+		$('.two').hasClass('occupied') &&
+		$('.three').hasClass('occupied') &&
+		$('.four').hasClass('occupied') &&
+		$('.five').hasClass('occupied') &&
+		$('.six').hasClass('occupied') &&
+		$('.seven').hasClass('occupied') &&
+		$('.eight').hasClass('occupied') &&
+		$('.nine').hasClass('occupied')
+		) {
 		return true
 	};
 
 	return false
-}
+};
+
+function cleanUp() {
+	$('.square')
+		.empty()
+		.removeClass('occupied');
+};
 
 
 $(document).ready(function() {
@@ -45,7 +61,7 @@ $(document).ready(function() {
 	// Define initial player
 	player = "X";
 
-	$(".square")
+	$('.square')
 		.on("click", function() {
 			// First make sure it is an open square
 			if ($(this).hasClass('occupied')) {
@@ -57,12 +73,18 @@ $(document).ready(function() {
 					.addClass('occupied')
 					.text(player).appendTo(this);
 
+				// Check for a winner
 				if (winner()) {
 					alert("Game over! " + player + " wins!");
-					// Reset board
-					$('.square')
-						.empty()
-						.removeClass('occupied');
+					// Reset board;
+					cleanUp();
+
+				// Check for a draw
+				} else if (draw()) {
+					alert("It's a draw!");
+					cleanUp();
+
+				// Prepare for next turn
 				} else {
 					if (player == "X") {
 						player = "O";
