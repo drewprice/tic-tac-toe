@@ -10,15 +10,45 @@ a {
 	width: 45vw;
 	height: 45vw;
 	margin: 0 auto;
-	outline: red solid 1px;
 }
 
 	.square {
 		float: left;
 		text-align: center;
-		width: 33.33333333%;
-		height: 33.33333333%;
-		outline: grey dashed 1px;
+		width: 33%;
+		height: 33%;
 	}
 
-		
+	.square:hover {
+		background: red;
+	}
+
+	.occupied:hover {
+		background: none;
+	}
+
+		/* Center */
+		.five {
+			border: 1px solid #222;
+		}
+
+		/* Horizontal Lines */
+		.four, .six {
+			border: 1px solid #222;
+			border-left: none;
+			border-right: none;
+		}
+
+		/* Vertical Lines */
+		.two, .eight {
+			border: 1px solid #222;
+			border-top: none;
+			border-bottom: none;
+		}
+
+
+
+
+.scores {
+	text-align: center;
+}

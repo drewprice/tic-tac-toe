@@ -30,7 +30,7 @@ function winner() {
 	return false
 }
 
-// This function checks to for a fullboard, without a winner
+// This function checks for a fullboard without a winner
 function draw() {
 	if (
 		$('.one').hasClass('occupied') &&
@@ -50,16 +50,50 @@ function draw() {
 };
 
 function cleanUp() {
+	// Clear grid
 	$('.square')
 		.empty()
 		.removeClass('occupied');
+
+	// Update score board
+	$('.total_games')
+		.text(gameCount)
+		.appendTo('.total_games');
+	$('.x_wins')
+		.text(xWins)
+		.appendTo('.x_wins');
+	$('.o_wins')
+		.text(oWins)
+		.appendTo('.o_wins');
+	$('.total_draws')
+		.text(drawCount)
+		.appendTo('.total_draws');
 };
 
+function totalWins(p) {
+	if (p == "X") {
+		xWins++;
+	} else{
+		oWins++;
+	};
+};
+
+function totalGames() {
+	gameCount++;
+};
+
+function totalDraws() {
+	drawCount++;
+};
 
 $(document).ready(function() {
 
 	// Define initial player
 	player = "X";
+	gameCount = 0;
+	drawCount = 0;
+	xWins = 0;
+	oWins = 0;
 
 	$('.square')
 		.on("click", function() {
@@ -76,12 +110,19 @@ $(document).ready(function() {
 				// Check for a winner
 				if (winner()) {
 					alert("Game over! " + player + " wins!");
-					// Reset board;
+					// Update counts
+					totalWins(player);
+					totalGames();
+					// Reset board
 					cleanUp();
 
 				// Check for a draw
 				} else if (draw()) {
 					alert("It's a draw!");
+					// Update counts
+					totalDraws();
+					totalGames();
+					// Reset board
 					cleanUp();
 
 				// Prepare for next turn
