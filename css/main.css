@@ -2,46 +2,73 @@
 	text-align: center;
 }
 
+h1 {
+	font: 700 3em 'Oswald', sans-serif;
+	color: #434343;
+}
+
+h2 {
+	font: 400 1.5em 'PT Mono', sans-serif;
+}
+
 a {
 	text-decoration: none; 
+	font: 400 8em 'PT Mono', sans-serif;
+	color: #a2c4c9;
+}
+
+a:visited {
+	color: #a2c4c9;
 }
 
 .container {
-	width: 45vw;
-	height: 45vw;
+	width: 40vw;
+	height: 40vw;
 	margin: 0 auto;
+	border-radius: 5%;
+	overflow: hidden;
 }
 
 	.square {
 		float: left;
 		text-align: center;
-		width: 33%;
-		height: 33%;
+		width: 32.9%;
+		height: 32.9%;
+		-webkit-transition: background 0.75s;
+		-moz-transition: background 0.75s;
+		-o-transition: background 0.75s;
+		transition: background 0.75s;
+		overflow: hidden;
 	}
 
 	.square:hover {
-		background: red;
+		background: #f3f3f3;
+		-webkit-transition: background 1.5s;
+		-moz-transition: background 1.5s;
+		-o-transition: background 1.5s;
+		transition: background 1.5s;
 	}
 
 	.occupied:hover {
 		background: none;
+		cursor: default;
 	}
 
-		/* Center */
+		/* Center Square */
 		.five {
-			border: 1px solid #222;
+			border: 1px solid #ccc;
 		}
 
 		/* Horizontal Lines */
 		.four, .six {
-			border: 1px solid #222;
+			border: 1px solid #ccc;
 			border-left: none;
 			border-right: none;
 		}
 
 		/* Vertical Lines */
 		.two, .eight {
-			border: 1px solid #222;
+			border: 1px solid #ccc;
 			border-top: none;
 			border-bottom: none;
 		}
@@ -51,4 +78,5 @@ a {
 
 .scores {
 	text-align: center;
+	font: 400 1em 'PT Mono', sans-serif;
 }
